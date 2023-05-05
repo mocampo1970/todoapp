@@ -1,6 +1,7 @@
 package com.mauricio.todoapp.mapper;
 
 import com.mauricio.todoapp.persistence.entity.Task;
+import com.mauricio.todoapp.persistence.entity.TaskStatus;
 import com.mauricio.todoapp.service.dto.TaskInDTO;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +27,10 @@ public class TaskInDTOToTask implements IMapper<TaskInDTO, Task>{
 
         // Ahora asignamos los campos que no estan en el DTO pero si en la entidad
         task.setCreatedDate(LocalDateTime.now());
+        task.setFinished(false);
+        task.setTaskStatus(TaskStatus.ON_TIME);
 
-        return null;
+        // enviamos la tarea
+        return task;
     }
 }
