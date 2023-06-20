@@ -6,6 +6,8 @@ import com.mauricio.todoapp.persistence.repository.TaskRepository;
 import com.mauricio.todoapp.service.dto.TaskInDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TaskService {
 
@@ -28,10 +30,14 @@ public class TaskService {
 
     // Aqui en el servicio se va a recibir el TaskInDTO
     public Task createTask(TaskInDTO taskinDTO){
-        // Aqui se define task y recibe mapper
+        // Aqui se define task y recibe mapper y lo convierte
         Task task = mapper.map(taskinDTO);
         // Aqui ya tenemos el objeto Task mapeado mediante el mapper anterior
         return this.repositoty.save(task);
+    }
+
+    public List<Task> findall(){
+        return repositoty.findAll();
     }
 
 

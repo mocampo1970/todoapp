@@ -3,10 +3,9 @@ package com.mauricio.todoapp.controller;
 import com.mauricio.todoapp.persistence.entity.Task;
 import com.mauricio.todoapp.service.TaskService;
 import com.mauricio.todoapp.service.dto.TaskInDTO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 // @RequestMapping define el camino de nuestro controlador
 @RestController
@@ -24,5 +23,12 @@ public class TaskController {
     public Task createTask(@RequestBody TaskInDTO taskInDTO){
         return this.taskservice.createTask(taskInDTO);
     }
+
+    @GetMapping
+    public List<Task> findAll(){
+        return taskservice.findall();
+    }
+
+
 
 }
