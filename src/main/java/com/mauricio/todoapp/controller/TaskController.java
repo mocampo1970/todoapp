@@ -1,8 +1,10 @@
 package com.mauricio.todoapp.controller;
 
 import com.mauricio.todoapp.persistence.entity.Task;
+import com.mauricio.todoapp.persistence.entity.TaskStatus;
 import com.mauricio.todoapp.service.TaskService;
 import com.mauricio.todoapp.service.dto.TaskInDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +31,19 @@ public class TaskController {
         return taskservice.findall();
     }
 
+    // esta es una vble
+    @GetMapping("status/{status}")
+    public List<Task> findAllByStatus(@PathVariable("status") TaskStatus status){
+        return taskservice.findAllByStatus(status);
+    }
 
+    // Vamos a actualizar lo ideal es que se busque un verbo que haga esto.
+    @PatchMapping("/mark_as_finished/{id}")
+    public ResponseEntity<Void> markAsFinished(@PathVariable ("id") Long id){
+        this.taskservice.updateTaskAsFinished(id);
+        // Esta instruccion lo que esta diciendo es que siempre 204 como para que la persona que
+        // consume la api no se quede esperando
+        return ResponseEntity.noContent().build();
+    }
 
 }
