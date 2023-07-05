@@ -11,8 +11,8 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
     // Aqui necesitamos obtener las tareas por estado, podemos hacer un query.
-    // vamos a hacer una consulta usando jpa
-    //private List<Task> findAllByTaskStatus(TaskStatus status);
+    // vamos a hacer una consulta usando jpa, recibe un status
+    public List<Task> findAllByTaskStatus(TaskStatus status);
 
 
 }

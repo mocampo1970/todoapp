@@ -2,6 +2,7 @@ package com.mauricio.todoapp.service;
 
 import com.mauricio.todoapp.mapper.TaskInDTOToTask;
 import com.mauricio.todoapp.persistence.entity.Task;
+import com.mauricio.todoapp.persistence.entity.TaskStatus;
 import com.mauricio.todoapp.persistence.repository.TaskRepository;
 import com.mauricio.todoapp.service.dto.TaskInDTO;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,11 @@ public class TaskService {
 
     public List<Task> findall(){
         return repositoty.findAll();
+    }
+
+    // Busca por status
+    public List<Task> findAllByStatus(TaskStatus status){
+        return repositoty.findAllByTaskStatus(status);
     }
 
 
