@@ -66,5 +66,21 @@ public class TaskService {
         this.repositoty.markTaskAsFinished(id);
     }
 
+    // Eliminar una tarea
+    public void DeleteById(Long id){
+
+        // Si no existe lance mensaje, para eso utilizamos el findbyid, este devuelve optional,
+        // por esa razon se trabaja con optional y generico
+        // verificamos que la tarea exista.
+        Optional<Task> optionalTask = this.repositoty.findById(id);
+
+        // Osea isEmpty  es que no hay tarea
+        if (optionalTask.isEmpty()){
+            throw new ToDoExceptions("task not found", HttpStatus.NOT_FOUND);
+        }
+
+        this.repositoty.deleteById(id);
+    }
+
 
 }

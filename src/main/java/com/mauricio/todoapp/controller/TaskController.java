@@ -46,4 +46,12 @@ public class TaskController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable ("id") Long id){
+        this.taskservice.DeleteById(id);
+        // Esta instruccion lo que esta diciendo es que siempre 204 como para que la persona que
+        // consume la api no se quede esperando
+        return ResponseEntity.noContent().build();
+    }
+
 }
